@@ -92,7 +92,8 @@ elif argv[1] == 'run':
   judul = 'Running movie'
  
   # function to combine two images, import another script for modularity
-  from vision.timpa import timpa
+  # from vision.timpa import timpa
+  from timpa import timpa
 
   # code to support features
   # reverse route
@@ -131,5 +132,6 @@ elif argv[1] == 'run':
     cv2.waitKey(1)
 
   movie.release()
+  print('[I] Movie saved.')
   cv2.waitKey()
   cv2.destroyAllWindows()

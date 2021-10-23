@@ -7,11 +7,14 @@ def timpa(depan, belakang, posisi):
   [ay, ax, am] = posisi
   scale = am / depan.shape[1]
   depan = cv2.resize(depan, None, fx=scale, fy=scale)
-  ah, aw, ac = depan.shape
-  if ac == 3:
-    depan = cv2.cvtColor(depan, cv2.COLOR_BGR2BGRA)
-  elif ac == 1:
+  if len(depan.shape) == 3:
+    [ah, aw, ac] = depan.shape
+    if ac == 3:
+      depan = cv2.cvtColor(depan, cv2.COLOR_BGR2BGRA)
+  else:
+    [ah, aw] = depan.shape
     depan = cv2.cvtColor(depan, cv2.COLOR_GRAY2BGRA)
+
   bh, bw = belakang.shape[:2]
   y0 = int(ay - ah/2)
   x0 = int(ax - aw/2)
